@@ -7,7 +7,7 @@ const EXPRESS = require('express');
 const APP = EXPRESS();
 
 //setting
-APP.set('port',4000);
+APP.set('port',process.env.PORT || 4000);
 APP.set('json spaces',2);
 
 //middlewares
