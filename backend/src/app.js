@@ -1,8 +1,7 @@
 'use strict'
 
-require('../config/globals');
 const PATH = require('path');
-const ROUTER = require(PATH.join(app_path,'/backend/src/routes/personRoute'));
+const ROUTER = require(PATH.join(process.env.APP_PATH,'/backend/src/routes/personRoute'));
 const EXPRESS = require('express');
 const APP = EXPRESS();
 

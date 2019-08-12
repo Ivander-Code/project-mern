@@ -1,9 +1,8 @@
 'use strict'
 
-require('../config/globals');
 const MYSQL = require('mysql');
 const PATH = require('path');
-const CONFIG = require(PATH.join(app_path,'/backend/config/dbConfig'));
+const CONFIG = require(PATH.join(process.env.APP_PATH,'/backend/config/dbConfig'));
 
 class DB {
 

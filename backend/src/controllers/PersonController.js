@@ -2,7 +2,7 @@
 
 require('../../lib/DB');
 const PATH = require('path');
-const OBJ_DB = require(PATH.join(app_path,'/backend/lib/DB'));
+const OBJ_DB = require(PATH.join(process.env.APP_PATH,'/backend/lib/DB'));
 
 class PersonController{
     constructor(){

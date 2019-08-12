@@ -1,11 +1,11 @@
 'use strict'
 
 const CONFIG = {
-    "host": "localhost",
-    "user": "Ivander",
-    "password": "fulgore@Mysql69",
-    "port": 3306,
-    "database": "purephp"
+    "host": process.env.DB_HOST,
+    "user": process.env.DB_USER,
+    "password": process.env.DB_PASS,
+    "port": process.env.DB_PORT,
+    "database": process.env.DB_DATABASE
 }
 
 module.exports = CONFIG;
