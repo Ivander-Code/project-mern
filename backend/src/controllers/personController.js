@@ -1,55 +1,57 @@
 'use strict'
 
-require('../../lib/DB');
 const PATH = require('path');
-const OBJ_DB = require(PATH.join(process.env.APP_PATH,'/backend/lib/DB'));
+const PERSON = require(PATH.join(process.env.APP_PATH,'/backend/src/models/personModel'));
+let personController = {};
 
-class PersonController{
-    constructor(){
-        this.dbInstance = OBJ_DB.getInstance();
-        this.result = {
-            data:{},
-            message:{
-                type:'',
-                messageText:''
-            }
-        };
-    }
-
-    async getAllPersons(){
-        let qry = 'SELECT * from persona WHERE active = 1';
-        let result = await this.excecute(qry);
-        return result;
-    }
-
-    async storeNewPerson(args){
-        let qry = 'INSERT INTO persona SET ?';
-        return await this.excecute(qry,args);
-    }
-
-    async deletePersonById(value){
-        let qry = 'DELETE FROM persona WHERE id = ?';
-        return await this.excecute(qry, value);
-    }
-
-    async updatePersonById(args){
-        let qry = 'UPDATE persona set nombre = ?, apellido1 = ?, apellido2 =? , dep = ? WHERE id =?';
-        let {id,nombre,apellido1,apellido2,dep} = args;
-        return await this.excecute(qry,[nombre,apellido1,apellido2,dep,id]);
-    }
-
-    async excecute(qry, args = {}){
-        try{
-            this.result.data = await this.dbInstance.query(qry,args);
-            this.result.message.type = 'success';
-            this.result.message.messageText = 'Successful operation';
-        }catch(e){
-            this.result.data = {};
-            this.result.message.type = 'error';
-            this.result.message.messageText = `UPS!! Something unexpected happened: ${e.sqlMessage}`;
+personController.getAllPersons = async (req, res) => {
+    let result = await personController.exceute('get');
+    res.send(result);
+};
+personController.storeNewPerson = async  (req, res) =>{
+    let result = await personController.exceute('store', req);
+    res.json(result);
+};
+personController.deletePersonById = async (req, res)=>{
+    let result = await  personController.exceute('delete',req);
+    res.json(result);
+};
+personController.updatePersonById = async (req,res)=>{
+    let result = await personController.exceute('update',req);
+    res.json(result);
+};
+personController.exceute = async(action, req = {})=>{
+    let response = {
+        data:{},
+        message:{
+            type:'',
+            messageText:''
         }
-        return this.result;
     }
+    try{
+        switch (action) {
+            default:
+            case 'get':
+                response.data = await PERSON.findAll({where:{active:1}});
+                break;
+            case 'store':
+                response.data = await PERSON.create(req.body);
+                break;
+            case 'delete':
+                response.data = await PERSON.destroy({where:{id:req.params.id}});
+                break;
+            case 'update':
+                response.data = await PERSON.update(req.body,{where:{id:req.body.id}});
+                break;
+        }
+        response.message.type = 'success';
+        response.message.messageText = 'Successful operation';
+    }catch(e){
+        response.data = {};
+        response.message.type = 'error';
+        response.message.messageText = `UPS!! Something unexpected happened: ${e.message}`;
+    }
+    return response;
 }
 
-module.exports = new PersonController();
+module.exports = personController;

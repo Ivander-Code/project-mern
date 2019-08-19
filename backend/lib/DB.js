@@ -1,28 +1,17 @@
 'use strict'
+const {Sequelize} = require('sequelize');
+const SEQUELIZE =  new Sequelize(`${process.env.DB_DATABASE}`,`${process.env.DB_USER}`,`${process.env.DB_PASS}`,{
+    host : `${process.env.DB_HOST}`,
+    dialect : 'mysql'
+});
 
-const MYSQL = require('mysql');
-const PATH = require('path');
-const CONFIG = require(PATH.join(process.env.APP_PATH,'/backend/config/dbConfig'));
-
-class DB {
-
-    constructor(){
-        this.connection = MYSQL.createConnection(CONFIG);
+(async ()=>{
+    try{
+        await SEQUELIZE.authenticate()
+    }catch(e){
+        console.log('Error DB: ',e.message);
+        await SEQUELIZE.close();
     }
+})();
 
-    static getInstance(){
-        return new DB();
-    }
-
-    query(sql, args = ''){
-        return(
-            new Promise((resolve, reject) => {
-                this.connection.query(sql, args,(error,result,fields)=>{
-                    return (error)? reject(error) : resolve(result);
-                });
-            })
-        );
-    }
-}
-
-module.exports = DB;
+module.exports = SEQUELIZE;
