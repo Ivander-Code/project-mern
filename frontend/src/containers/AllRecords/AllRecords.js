@@ -14,7 +14,7 @@ export default function AllRecords({persons,message}){
                     <div className='col-md-3'>Name</div>
                     <div className='col-md-3'>Last Name</div>
                     <div className='col-md-3'>Second Last Name</div>
-                    <div className='col-md-3'>No. Identifier</div>
+                    <div className='col-md-3'>Age</div>
                 </div>
                 {
                     persons.map((person, index)=>{
@@ -24,7 +24,7 @@ export default function AllRecords({persons,message}){
                                 <div className='col-md-3 border'>{person.nombre}</div>
                                 <div className='col-md-3 border'>{person.apellido1}</div>
                                 <div className='col-md-3 border'>{person.apellido2}</div>
-                                <div className='col-md-3 border'>{person.dep}</div>
+                                <div className='col-md-3 border'>{person.age}</div>
                             </div>
                         );
                     })

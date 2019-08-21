@@ -32,16 +32,20 @@ personController.exceute = async(action, req = {})=>{
         switch (action) {
             default:
             case 'get':
-                response.data = await PERSON.findAll({where:{active:1}});
+                response.data = await PERSON.find({active:1});
                 break;
             case 'store':
-                response.data = await PERSON.create(req.body);
+                let {nombre,apellido1, apellido2, age} = req.body;
+                let newPerson = new PERSON({
+                    nombre, apellido1, apellido2, age
+                });
+                response.data = await newPerson.save();
                 break;
             case 'delete':
-                response.data = await PERSON.destroy({where:{id:req.params.id}});
+                response.data = await PERSON.findByIdAndDelete(req.params.id);
                 break;
             case 'update':
-                response.data = await PERSON.update(req.body,{where:{id:req.body.id}});
+                response.data = await PERSON.findOneAndUpdate({_id:req.body.id},req.body)
                 break;
         }
         response.message.type = 'success';

@@ -69,7 +69,7 @@ export default function EditRecord(args){
                         <div className='col-md-2 align-self-center'>Name</div>
                         <div className='col-md-3 align-self-center'>Last Name</div>
                         <div className='col-md-3 align-self-center'>Second Last Name</div>
-                        <div className='col-md-2 align-self-center'>No. Identifier</div>
+                        <div className='col-md-2 align-self-center'>Age</div>
                         <div className='col-md-2 text-sm-center'>
                             Actions
                             <div className='row'>
@@ -83,7 +83,7 @@ export default function EditRecord(args){
                             let style = (index % 2)? 'bg-light':'';
                             return(
                                 <form key={index} id={`form_${index}`}>
-                                    <input type='hidden' name='data[id]' data-name='id' defaultValue={person.id}/>
+                                    <input type='hidden' name='data[id]' data-name='id' defaultValue={person._id}/>
                                     <div className={`row ${style} text-center`}>
                                         <div className='col-md-2 pt-1 border'>
                                             <label className='col-form-label small'>{person.nombre}</label>
@@ -98,8 +98,8 @@ export default function EditRecord(args){
                                             <input name='data[apellido2]' data-name='apellido2' type='hidden'className='form-control'defaultValue={person.apellido2}></input>
                                         </div>
                                         <div className='col-md-2 pt-1 border'>
-                                            <label className='col-form-label small'>{person.dep}</label>
-                                            <input name='data[dep]' data-name='dep' type='hidden'className='form-control'defaultValue={person.dep}></input>
+                                            <label className='col-form-label small'>{person.age}</label>
+                                            <input name='data[age]' data-name='age' type='hidden'className='form-control'defaultValue={person.age}></input>
                                         </div>
                                         <div className='col-md-2 pt-2 border'>
                                             <div className='row'>

@@ -1,17 +1,15 @@
 'use strict'
-const {Sequelize} = require('sequelize');
-const SEQUELIZE =  new Sequelize(`${process.env.DB_DATABASE}`,`${process.env.DB_USER}`,`${process.env.DB_PASS}`,{
-    host : `${process.env.DB_HOST}`,
-    dialect : 'mysql'
+const MONGOOSE = require('mongoose');
+const URI = process.env.DB_URI ? process.env.DB_URI : 'mongodb://localhost/testdb';
+
+MONGOOSE.connect(URI,{
+    useNewUrlParser:true,
+    useCreateIndex:true,
+    useFindAndModify:false
 });
 
-(async ()=>{
-    try{
-        await SEQUELIZE.authenticate()
-    }catch(e){
-        console.log('Error DB: ',e.message);
-        await SEQUELIZE.close();
-    }
-})();
+const CONNECTION = MONGOOSE.connection;
 
-module.exports = SEQUELIZE;
+CONNECTION.once('open',()=>{
+    console.log('Connected Database');
+});

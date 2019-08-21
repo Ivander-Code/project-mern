@@ -1,40 +1,35 @@
 'use strict'
-const PATH = require('path');
-const {Sequelize} = require('sequelize');
-const SEQUELIZE = require(PATH.join(process.env.APP_PATH,'/backend/lib/DB'));
-
-const PERSON = SEQUELIZE.define('persona',{
-    id:{
-        type: Sequelize.INTEGER,
-        primaryKey: true,
-        autoIncrement: true,
-        allowNull: false
-    },
+const {Schema, model} = require('mongoose');
+const PERSON = new Schema({
     nombre:{
-        type: Sequelize.STRING,
+        type: String,
+        required: true,
+        trim: true,
         allowNull: false
     },
     apellido1:{
-        type : Sequelize.STRING,
-        allowNull : false
+        type: String,
+        required: true,
+        trim: true
     },
     apellido2:{
-        type: Sequelize.STRING,
-        allowNull: false
+        type: String,
+        required: true,
+        trim: true
     },
-    dep:{
-        type: Sequelize.INTEGER,
-        allowNull: false
+    age:{
+        type: Number,
+        required: true
     },
     active:{
-        type: Sequelize.INTEGER,
-        allowNull: true,
-        defaultValue: 1
-    },
-
+        type: Number,
+        default: 1,
+        required: false
+    }
 },{
-    freezeTableName: true,
-    timestamps: false
+    timestamps: true,
+    collection: 'person'
 });
 
-module.exports = PERSON;
+module.exports = model('Person', PERSON);
+
