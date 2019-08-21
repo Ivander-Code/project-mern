@@ -55,7 +55,7 @@ export default function NewRecord({updatePersons}){
                 <div className='col-md-6'>
                     <div className='form-group'>
                         <label htmlFor='age'>Age:</label>
-                        <input type='text' data-name='age' className='form-control' name='data[age]' placeholder='Enter Identifier'/>
+                        <input type='text' data-name='age' className='form-control' name='data[age]' placeholder='Enter Age'/>
                     </div>
                 </div>
                 <div className='col-md-6'>
