@@ -12,6 +12,8 @@ APP.set('json spaces',2);
 //middlewares
 APP.use(EXPRESS.json());
 APP.use(EXPRESS.urlencoded({'extended':false}));
+
+//CORS Configuration , Public RESTful API
 APP.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
