@@ -1,3 +1,6 @@
-bg-white{
-    background-color: white !important;
+.bg-white {
+  background-color: white !important;
+}
+.m-none-auto{
+  margin: 0 auto;
 }

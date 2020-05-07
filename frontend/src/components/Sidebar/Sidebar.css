@@ -1,0 +1,11 @@
+#sideBar {
+  position: sticky;
+  top: 56px;
+  z-index: 1000;
+}
+
+@media (min-width: 992px) {
+  #sideBar {
+    height: calc(100vh - 56px);
+  }
+}

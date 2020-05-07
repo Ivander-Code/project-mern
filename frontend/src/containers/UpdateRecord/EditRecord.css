@@ -1,3 +1,17 @@
-bg-white{
-    background-color: white !important;
+.bg-white {
+  background-color: white !important;
+}
+
+*[name="update"] {
+  padding: 0;
+}
+
+*[name="update"],
+*[name="delete"] {
+  font-size: 11px !important;
+}
+
+*[name="update"] > span,
+*[name="delete"] > span {
+  font-size: 13px !important;
 }
