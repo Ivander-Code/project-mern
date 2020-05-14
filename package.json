@@ -1,5 +1,5 @@
 {
-  "name": "project-mern-crud-example",
+  "name": "project-mern",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
@@ -13,7 +13,7 @@
     "sequelize": "^5.21.7"
   },
   "devDependencies": {
-    "nodemon": "^1.19.1"
+    "nodemon": "^2.0.3"
   },
   "scripts": {
     "dev": "nodemon index.js"
