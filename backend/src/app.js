@@ -5,6 +5,7 @@ const ROUTER = require(PATH.join(
   process.env.APP_PATH,
   "/backend/src/routes/personRoute"
 ));
+const CORS = require("cors");
 const EXPRESS = require("express");
 const APP = EXPRESS();
 
@@ -17,6 +18,7 @@ APP.use(EXPRESS.json());
 APP.use(EXPRESS.urlencoded({ extended: false }));
 
 //CORS Configuration , Public RESTful API
+APP.use(CORS());
 APP.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header(
