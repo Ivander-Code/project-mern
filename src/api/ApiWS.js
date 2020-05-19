@@ -1,5 +1,6 @@
 import axios from "axios";
 import axios_config from "./config/axios";
+
 class ApiWS {
   constructor() {
     this.api = axios.create(axios_config);

@@ -6,7 +6,7 @@ const {
   storeNewPerson,
   deletePersonById,
   updatePersonById,
-} = require(PATH.join(process.env.APP_PATH, "/backend/src/controllers/personController"));
+} = require(PATH.join(process.env.APP_PATH, "/server/src/controllers/personController"));
 const { Router } = require("express");
 const ROUTER = Router();
 

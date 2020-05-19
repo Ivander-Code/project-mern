@@ -3,7 +3,7 @@
 const PATH = require("path");
 const PERSON = require(PATH.join(
   process.env.APP_PATH,
-  "/backend/src/models/personModel"
+  "/server/src/models/personModel"
 ));
 let personController = {};
 

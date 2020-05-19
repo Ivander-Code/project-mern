@@ -1,4 +1,12 @@
 'use strict'
 require('dotenv').config();
-require('./backend/lib/DB');
-require('./backend/src/app');
+require('./server/lib/DB');
+const APP = require('./server/src/app');
+
+/** Starting server */
+
+(()=>{
+  APP.listen(APP.get("port"), () => {
+    console.log("Server On port 4000");
+  });
+})();

@@ -3,7 +3,7 @@
 const PATH = require("path");
 const ROUTER = require(PATH.join(
   process.env.APP_PATH,
-  "/backend/src/routes/personRoute"
+  "/server/src/routes/personRoute"
 ));
 const CORS = require("cors");
 const EXPRESS = require("express");
@@ -32,10 +32,5 @@ APP.use((req, res, next) => {
 
 //routes
 APP.use(ROUTER);
-
-// starting server
-APP.listen(APP.get("port"), () => {
-  console.log("Server On port 4000");
-});
 
 module.exports = APP;
