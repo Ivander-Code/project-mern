@@ -3,8 +3,6 @@ const htmlWebPackPlugin = require('html-webpack-plugin');
 const miniCssExtractPlugin = require('mini-css-extract-plugin');
 const dotenvPlugin = require('dotenv-webpack');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const optimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const terserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -13,13 +11,6 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'js/[name].bundle.js',
-  },
-  optimization: {
-    minimize: true,
-    minimizer: [
-      new terserPlugin({ test: /\.js(\?.*)?$/i }),
-      new optimizeCssAssetsPlugin(),
-    ],
   },
   module: {
     rules: [
