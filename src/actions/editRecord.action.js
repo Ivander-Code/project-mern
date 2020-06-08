@@ -1,8 +1,8 @@
-/** Action Type */
+/** Action Types */
 import {
   UPDATE_USER,
   REMOVE_USER,
-  CLEAR_RESPONSE_MESSAGE
+  CLEAN_RESPONSE_MESSAGE
 } from "../actionTypes/actionTypes";
 
 /** Dependecies */
@@ -31,12 +31,12 @@ const removeUser = (userId) => {
   };
 };
 
-const clearResponseMessage = (
+const cleanResponseMessage = (
   message = { type: "info", messageText: "Please click on the information for edit!" }
 ) => {
   return {
-    type: CLEAR_RESPONSE_MESSAGE,
+    type: CLEAN_RESPONSE_MESSAGE,
     edit_user_message: message,
   }
 };
-export { updateUser, removeUser, clearResponseMessage };
+export { updateUser, removeUser, cleanResponseMessage };

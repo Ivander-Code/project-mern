@@ -1,5 +1,5 @@
 /** Action Type */
-import { ADD_USER, CLEAR_ADD_MESSAGE } from "../actionTypes/actionTypes";
+import { ADD_USER, CLEAN_ADD_MESSAGE } from "../actionTypes/actionTypes";
 
 /** Dependencies */
 import apiWS from "../api/ApiWS";
@@ -16,10 +16,10 @@ const addUser = (user) => {
   };
 };
 
-const clearResponseMessage = () => {
+const cleanResponseMessage = () => {
   return {
-    type: CLEAR_ADD_MESSAGE,
+    type: CLEAN_ADD_MESSAGE,
     add_user_message: { type: "default", messageText: "" }
   };
 };
-export { addUser, clearResponseMessage };
+export { addUser, cleanResponseMessage };

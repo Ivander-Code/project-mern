@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { Row, Col, Form, Button } from "react-bootstrap";
 
 /** Action Creator */
-import { addUser, clearResponseMessage } from "../../actions/newRecord.action";
+import { addUser, cleanResponseMessage } from "../../actions/newRecord.action";
 
 /** Components */
 import CustomMessage from "../../components/CustomMessage/CustomMessage";
@@ -23,7 +23,7 @@ const NewRecord = () => {
     dispatch(addUser(info.data));
     event.target.reset();
     setTimeout(() => {
-      dispatch(clearResponseMessage());
+      dispatch(cleanResponseMessage());
     }, 3000);
   }
 

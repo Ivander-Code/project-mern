@@ -4,8 +4,8 @@ import {
   LOAD_USERS,
   REMOVE_USER,
   UPDATE_USER,
-  CLEAR_RESPONSE_MESSAGE,
-  CLEAR_ADD_MESSAGE
+  CLEAN_RESPONSE_MESSAGE,
+  CLEAN_ADD_MESSAGE
 } from "../actionTypes/actionTypes";
 
 /** Reducer */
@@ -39,12 +39,12 @@ const reducer = (state = {}, action) => {
         }),
         edit_user_message: action.edit_user_message,
       };
-    case CLEAR_RESPONSE_MESSAGE:
+    case CLEAN_RESPONSE_MESSAGE:
       return {
         ...state,
         edit_user_message: action.edit_user_message,
       };
-    case CLEAR_ADD_MESSAGE:
+    case CLEAN_ADD_MESSAGE:
       return{
         ...state,
         add_user_message: action.add_user_message

@@ -13,7 +13,7 @@ import formatData from "../../helpers/formatData";
 import {
   updateUser,
   removeUser,
-  clearResponseMessage,
+  cleanResponseMessage,
 } from "../../actions/editRecord.action";
 
 /** CSS File */
@@ -44,7 +44,7 @@ const EditRecord = () => {
         break;
     }
     setTimeout(() => {
-      dispatch(clearResponseMessage());
+      dispatch(cleanResponseMessage());
     }, 3000);
   }
 

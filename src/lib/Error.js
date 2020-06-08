@@ -1,6 +1,8 @@
+/** Dependencies */
 import React from "react";
+/** Components */
 import CustomMessage from "../components/CustomMessage/CustomMessage";
-
+/** Error Class Component */
 class Error extends React.Component {
   constructor(props) {
     super(props);

@@ -1,7 +1,8 @@
+/** Dependencies */
 import { createStore, applyMiddleware } from "redux";
 import reducer from "./reducers/reducer";
 import thunk from "redux-thunk";
-                                                                                          
+/** Store */
 export default createStore(
   reducer,
   {

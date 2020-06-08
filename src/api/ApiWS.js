@@ -1,6 +1,8 @@
+/** Dependencies */
 import axios from "axios";
+/** Axios Configuration */
 import axios_config from "./config/axios";
-
+/** Core Api */
 class ApiWS {
   constructor() {
     this.api = axios.create(axios_config);
